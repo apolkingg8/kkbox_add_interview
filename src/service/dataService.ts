@@ -1,7 +1,7 @@
 
 class DataService {
 
-    fillFromRss = async ()=> {
+    fillFromChannelRss = async (channelId: string)=> {
 
     }
 }

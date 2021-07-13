@@ -1,13 +1,15 @@
 import {observable} from "mobx";
 
-export default class Episode {
+export default class Channel {
 
     @observable id: string = null
     @observable title: string = ``
     @observable desc: string = ``
     @observable coverUrl: string = ``
 
-    constructor(props: Partial<Episode>) {
+    @observable episodeIds: string[] = []
+
+    constructor(props: Partial<Channel>) {
         Object.assign(this, props)
     }
 }
