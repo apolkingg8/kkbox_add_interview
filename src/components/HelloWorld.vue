@@ -15,7 +15,8 @@ import {Component, Prop} from "vue-property-decorator";
 @Component
 export default class HelloWorld extends Vue {
 
-  @Prop() title: string
+  @Prop({default: ``})
+  title: string
 
   hello = ()=> {
     alert(this.title)
