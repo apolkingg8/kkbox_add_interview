@@ -1,5 +1,6 @@
-import {computed, observable} from "mobx";
+import {action, computed, observable} from "mobx";
 import Channel from "@/klass/Channel";
+import _ from "lodash";
 
 class ChannelStore {
 
@@ -10,6 +11,12 @@ class ChannelStore {
         return this.channels.find((channel)=> {
             return channel.id === this.activeId
         }) || new Channel({id: `dumb`})
+    }
+
+    @action upsert = (newChannel: Channel)=> {
+        this.channels = _.unionBy(this.channels, [newChannel], (channel: Channel)=> {
+            return channel.id
+        })
     }
 
     constructor() {

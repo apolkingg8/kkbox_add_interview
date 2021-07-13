@@ -6,6 +6,7 @@ export default class Channel {
     @observable title: string = ``
     @observable desc: string = ``
     @observable coverUrl: string = ``
+    @observable lastUpdate: number = 0
 
     @observable episodeIds: string[] = []
 
