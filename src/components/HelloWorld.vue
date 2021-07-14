@@ -7,28 +7,37 @@
     >
       {{title}}
     </v-btn>
-    <img v-bind:src="coverUrl" alt="cover">
+    <div v-for="channel in channelStore.channels">
+      <p>{{channel.title}}</p>
+    </div>
+    <div v-for="episode in episodeStore.episodes">
+      <p>{{episode.title}}</p>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import Component from "vue-class-component";
 import dataService from "@/service/dataService";
 import {Observer} from "mobx-vue";
 import channelStore from "@/store/channelStore";
+import {Component, Prop} from "vue-property-decorator";
+import episodeStore from "@/store/episodeStore";
 
 @Observer
 @Component
 export default class HelloWorld extends Vue {
 
-  title: string = ``
+  channelStore = channelStore
+  episodeStore = episodeStore
 
-  coverUrl: string = ``
+  @Prop({
+    default: ``,
+  })
+  title: string
 
   hello = async ()=> {
     await dataService.fillFromChannelRss(`954689a5-3096-43a4-a80b-7810b219cef3`)
-    this.coverUrl = channelStore.channels[0].coverUrl
   }
 }
 </script>

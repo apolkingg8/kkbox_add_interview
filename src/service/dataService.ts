@@ -20,7 +20,7 @@ class DataService {
             coverUrl: parsedFeed['rss']['channel']['image']['url'],
         })
 
-        let items = parsedFeed['rss']['channel']['items']
+        let items = parsedFeed['rss']['channel']['item']
 
         _.forEach(items, (item, i)=> {
             let newEpisode = new Episode({

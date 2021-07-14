@@ -13,6 +13,10 @@ class ChannelStore {
         }) || new Channel({id: `dumb`})
     }
 
+    @computed get foo(): string {
+        return this.channels[0]?.coverUrl || ``
+    }
+
     @action upsert = (newChannel: Channel)=> {
         this.channels = _.unionBy(this.channels, [newChannel], (channel: Channel)=> {
             return channel.id
